@@ -35,17 +35,17 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     return genesis;
 }
 
-/**
- * Build the genesis block. Note that the output of its generation
- * transaction cannot be spent since it did not originally exist in the
- * database.
- *
- * CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1231006505, nBits=1d00ffff, nNonce=2083236893, vtx=1)
- *   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
- *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
- *     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
- *   vMerkleTree: 4a5e1e
- */
+
+ //Build the genesis block. Note that the output of its generation
+ //transaction cannot be spent since it did not originally exist in the
+ //database.
+/*
+ CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1231006505, nBits=1d00ffff, nNonce=2083236893, vtx=1)
+   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
+     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
+   vMerkleTree: 4a5e1e
+*/ 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "16/Oct/2018";
@@ -120,6 +120,20 @@ public:
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1539732399, 4227299255, 0x1d00ffff, 1, 37800000 * COIN);
+	
+	/*consensus.hashGenesisBlock = uint256("0x01");
+	if (true && genesis.GetHash() != consensus.hashGenesisBlock)
+		{
+		    Logprintf("recalculating params for mainnet.\n");
+		    Logprintf("old mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("old mainnet genesis hash:  %s\n", consensus.hashGenesisBlock.ToString().c_str());
+		    // deliberately empty for loop finds nonce value.
+		    for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+		    Logprintf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		    Logprintf("new mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+		}*/	
+	
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x00000000299f4c7568964fc1a191d1402bc232def1fa7997270e18df68fa3fe6"));
         assert(genesis.hashMerkleRoot == uint256S("0x62d61734574d4539353160df1d82a10a99785d13b089ea36be2188bb8f3e58eb"));
@@ -183,12 +197,12 @@ public:
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 10 * 60;
+        consensus.nPowTargetTimespan = 960;
+        consensus.nPowTargetSpacing = 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 12; // 
+        consensus.nMinerConfirmationWindow = 16; // 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -217,6 +231,20 @@ public:
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1539732399, 4227299255, 0x1d00ffff, 1, 37800000 * COIN);
+
+	/*consensus.hashGenesisBlock = uint256("0x01");
+	if (true && genesis.GetHash() != consensus.hashGenesisBlock)
+		{
+		    Logprintf("recalculating params for mainnet.\n");
+		    Logprintf("old mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("old mainnet genesis hash:  %s\n", consensus.hashGenesisBlock.ToString().c_str());
+		    // deliberately empty for loop finds nonce value.
+		    for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+		    Logprintf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		    Logprintf("new mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+		}*/
+
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x00000000299f4c7568964fc1a191d1402bc232def1fa7997270e18df68fa3fe6"));
         assert(genesis.hashMerkleRoot == uint256S("0x62d61734574d4539353160df1d82a10a99785d13b089ea36be2188bb8f3e58eb"));
@@ -276,12 +304,12 @@ public:
         consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in rpc activation tests)
         consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 10 * 60;
+        consensus.nPowTargetTimespan = 960; // two weeks
+        consensus.nPowTargetSpacing = 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
-        consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
+        consensus.nRuleChangeActivationThreshold = 3; // 75% for testchains
+        consensus.nMinerConfirmationWindow = 4; // Faster than normal for regtest (4 instead of 16)
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
@@ -306,6 +334,21 @@ public:
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1539732399, 0, 0x207fffff, 1, 37800000 * COIN);
+
+	/*consensus.hashGenesisBlock = uint256("0x01");
+	if (true && genesis.GetHash() != consensus.hashGenesisBlock)
+		{
+		    Logprintf("recalculating params for mainnet.\n");
+		    Logprintf("old mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("old mainnet genesis hash:  %s\n", consensus.hashGenesisBlock.ToString().c_str());
+		    // deliberately empty for loop finds nonce value.
+		    for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+		    Logprintf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		    Logprintf("new mainnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
+		    Logprintf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+		}*/
+
+
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x184ea5d6b4410dc93490afeb80d6b49187fbd3d33689f9e99334bdb8c30eca4a"));
         assert(genesis.hashMerkleRoot == uint256S("0x62d61734574d4539353160df1d82a10a99785d13b089ea36be2188bb8f3e58eb"));

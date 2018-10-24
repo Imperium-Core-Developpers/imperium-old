@@ -1,22 +1,57 @@
 Imperium Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/imperium/imperium.svg?branch=master)](https://travis-ci.org/imperium/imperium)
 
-https://imperiumcore.org
 
 What is Imperium?
 ----------------
 
-Imperium is an experimental digital currency that enables instant payments to
+Imperium is an experimental digital currency that aims to enable instant payments to
 anyone, anywhere in the world. Imperium uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Imperium Core is the name of open source
+out collectively by the network. Imperium Core is the name of the open source
 software which enables the use of this currency.
 
-For more information, as well as an immediately useable, binary version of
-the Imperium Core software, see https://imperiumcore.org/en/download/, or read the
-[original whitepaper](https://imperiumcore.org/imperium.pdf).
+
+
+Coin's characteristics
+----------------------
+Algorithm : sha256
+Asic-friendly : yes
+Symbol : IMP
+Total supply : 210 000 000 IMPs
+Pre-Mine : 37 800 000 IMPs ( 18 % )
+Pre-Mine repartition : 4 % Charities , 4 % I.C.O. , 4 % Bounties & Air-drops , 6 % Development
+Public mining : 172 200 000 IMPs ( 82 % )
+Initial mining reward : 50 IMPs
+Mining Reward Halved every : 2 100 000 blocks ( every four years on average )
+Block time : 1 minute
+Difficulty adjustments : Every 16 Blocs
+Mining Reward Maturity : After 101 confirmations
+Transaction confirmations : Average of 6 confirmations needed ( so 6 minutes )
+Minimum transaction fee : 0.00001 IMP per kilobyte
+
+
+
+Will be updated soon :
+--------------------
+
+More information : 
+Binary releases :
+White paper :
+Road map :
+
+bitcointalk.org ANN :
+discord channel :
+facebook page :
+youtube page :
+
+Initial coin offering ( ICO ) Website : 
+Exchanges listings :
+
+
+
+
 
 License
 -------
@@ -27,50 +62,23 @@ information or see https://opensource.org/licenses/MIT.
 Development Process
 -------------------
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/imperium/imperium/tags) are created
-regularly to indicate new official, stable release versions of Imperium Core.
+For now I am the only developper, but I plan to hire new developpers as the need for it occurs. 
+If you want to contribute to Imperium Core Developers, or have any kind of offers regarding Imperium Core, don't be afraid to PM me here on github.  " IMPERIUM-main-dev " is my github username.
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Testing
 -------
 
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
+Tests are mainly made on my home server. If you want to contribute, I suggest you do the same and do multiple backups often enough so you don't lose your progress. Also, inform yourself on how github works from command line in Ubuntu 18.04 LTS as this is the principal OS I use for development.
+
+
 
 ### Automated Testing
 
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
+The Travis CI system will eventually be used to make sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically. 
 
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
 
 Translations
 ------------
 
-Changes to translations as well as new translations can be submitted to
-[Imperium Core's Transifex page](https://www.transifex.com/projects/p/imperium/).
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
-
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/imperium-translators).
+They are integrated from bitcoin's source code.

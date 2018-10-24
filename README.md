@@ -16,19 +16,33 @@ software which enables the use of this currency.
 
 Coin's characteristics
 ----------------------
+
 Algorithm : sha256
+
 Asic-friendly : yes
+
 Symbol : IMP
+
 Total supply : 210 000 000 IMPs
+
 Pre-Mine : 37 800 000 IMPs ( 18 % )
+
 Pre-Mine repartition : 4 % Charities , 4 % I.C.O. , 4 % Bounties & Air-drops , 6 % Development
+
 Public mining : 172 200 000 IMPs ( 82 % )
+
 Initial mining reward : 50 IMPs
+
 Mining Reward Halved every : 2 100 000 blocks ( every four years on average )
+
 Block time : 1 minute
+
 Difficulty adjustments : Every 16 Blocs
+
 Mining Reward Maturity : After 101 confirmations
+
 Transaction confirmations : Average of 6 confirmations needed ( so 6 minutes )
+
 Minimum transaction fee : 0.00001 IMP per kilobyte
 
 
@@ -36,17 +50,24 @@ Minimum transaction fee : 0.00001 IMP per kilobyte
 Will be updated soon :
 --------------------
 
-More information : 
+More information :
+
 Binary releases :
+
 White paper :
+
 Road map :
 
 bitcointalk.org ANN :
+
 discord channel :
+
 facebook page :
+
 youtube page :
 
 Initial coin offering ( ICO ) Website : 
+
 Exchanges listings :
 
 
